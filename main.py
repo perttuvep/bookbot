@@ -4,12 +4,13 @@ def wc(str):
         count += 1
     return count
 
-def charcounter(str:str):
+def charcounter(str):
     chardict = {}
     for char in str:
         if char.isalpha():
             chardict[char.lower()] = chardict.get(char.lower(),0) + 1
     return chardict
+
 
 def main():
     with open("./books/frankenstein.txt") as f:
@@ -17,8 +18,10 @@ def main():
     
         word_count = wc(file_contents)
         char_count = charcounter(file_contents)
-        print(word_count,char_count)
-            
-
+        print(word_count)
+        
+        list_dicts = []
+        for key,value in sorted(char_count.items(),reverse=True,key=lambda item:item[1]):
+            print(key,value)
         
 main()
